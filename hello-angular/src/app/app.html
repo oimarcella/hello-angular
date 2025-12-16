@@ -175,8 +175,44 @@
 
 <main class="main">
   <div class="content">
-      <h1>Hello, {{ title() }}</h1>
-      <p>Congratulations! Your Angular app is running. 🎉</p>
+      <h1>
+        {{ title()}}
+        {{(profile$ | async)?.name?  (profile$ | async)?.name : "..."}}
+      </h1>
+      <p *ngIf="(profile$ | async)?.name">{{(profile$ | async)?.saySomething}}🔥</p>
+
+      <br/>
+      <pre>
+        Debug:
+        {{ (profile$ | async) | json }}
+      </pre>
+      
+
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="field">
+          <label for="name">Nome:</label>
+          <input id="name" formControlName="name" placeholder="Qual seu nome?">
+        </div>
+        <div class="field">
+          <label for="email">E-mail:</label>
+          <input id="email" formControlName="email" placeholder="Qual seu e-mail?">
+        </div>
+        <div class="field">
+          <label for="age">Idade:</label>
+          <input id="age" formControlName="age" placeholder="Qual sua idade?">
+        </div>
+        <div class="field">
+          <label for="saySomething">O que tem a dizer?</label>
+          <input id="saySomething" formControlName="saySomething" placeholder="Diga algo...">
+        </div>
+        <button type="submit">Enviar</button>
+      </form>
+      
+      <!--<input 
+        #nameInput
+        placeholder="Nome..."
+      >
+      <button (click)="setProfileName(nameInput.value)">Salvar</button>-->
   </div>
 </main>
 
