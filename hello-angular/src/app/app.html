@@ -179,7 +179,7 @@
         {{ title()}}
         {{(profile$ | async)?.name?  (profile$ | async)?.name : "..."}}
       </h1>
-      <p *ngIf="(profile$ | async)?.name">{{(profile$ | async)?.saySomething}}🔥</p>
+      <p *ngIf="(profile$ | async)?.saySomething">{{(profile$ | async)?.saySomething}}🔥</p>
 
       <br/>
       <pre>

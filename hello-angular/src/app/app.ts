@@ -46,16 +46,4 @@ export class App {
     this.title.set("Wow");
   }
 
-  async setProfileName(name: string) {
-
-    const profile = await firstValueFrom(this.profile$);
-
-    console.log("salvando nome ...", name)
-    this.store.dispatch(profileSetProfile(
-      {profile:{...profile, age: 300}})
-    );
-    this.title.set("Wow");
-    this.store.dispatch(profileSetName({name}));
-  }
-
 }
